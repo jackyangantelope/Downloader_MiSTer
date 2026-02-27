@@ -43,7 +43,7 @@ class TestConfigReader(unittest.TestCase):
             K_DOWNLOADER_RETRIES: 3,
             K_VERBOSE: False,
             K_DATABASES: {'distribution_mister': {
-                K_DB_URL: 'https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/db.json.zip',
+                K_DB_URL: 'https://raw.githubusercontent.com/jackyangantelope/Distribution_MiSTer/main/db.json.zip',
                 K_SECTION: 'distribution_mister',
             }}
         })
@@ -85,7 +85,7 @@ class TestConfigReader(unittest.TestCase):
             K_BASE_SYSTEM_PATH: '/media/cifs',
             K_VERBOSE: True,
             K_DATABASES: {'distribution_mister': {
-                K_DB_URL: 'https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/db.json.zip',
+                K_DB_URL: 'https://raw.githubusercontent.com/jackyangantelope/Distribution_MiSTer/main/db.json.zip',
                 K_SECTION: 'distribution_mister',
             }},
         })
@@ -119,7 +119,7 @@ class TestConfigReader(unittest.TestCase):
     def test_config_reader___with_db_and_distrib_empty_section_1___returns_one_db_and_defult_distrib(self):
         self.assertEqual(databases("test/integration/fixtures/db_plus_distrib_empty_section_1.ini"),
                          {'distribution_mister': {
-                             K_DB_URL: 'https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/db.json.zip',
+                             K_DB_URL: 'https://raw.githubusercontent.com/jackyangantelope/Distribution_MiSTer/main/db.json.zip',
                              K_SECTION: 'distribution_mister',
                          }, 'one': {
                              K_DB_URL: 'https://one.com',
@@ -131,7 +131,7 @@ class TestConfigReader(unittest.TestCase):
             K_DB_URL: 'https://one.com',
             K_SECTION: 'one',
         }, 'distribution_mister': {
-            K_DB_URL: 'https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/db.json.zip',
+            K_DB_URL: 'https://raw.githubusercontent.com/jackyangantelope/Distribution_MiSTer/main/db.json.zip',
             K_SECTION: 'distribution_mister',
         }})
 
