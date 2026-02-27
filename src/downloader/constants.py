@@ -14,7 +14,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # You can download the latest version of this tool from:
-# https://github.com/MiSTer-devel/Downloader_MiSTer
+# https://github.com/jackyangantelope/Downloader_MiSTer
 
 from typing import Final, TypedDict
 
@@ -27,7 +27,7 @@ class SafeFetchInfo(TypedDict):
 DATABASE_LATEST_SUPPORTED_VERSION: Final[int] = 1
 
 # Pre-selected database
-DISTRIBUTION_MISTER_DB_URL: Final[str] = 'https://raw.githubusercontent.com/MiSTer-devel/Distribution_MiSTer/main/db.json.zip'
+DISTRIBUTION_MISTER_DB_URL: Final[str] = 'https://raw.githubusercontent.com/jackyangantelope/Distribution_MiSTer/main/db.json.zip'
 DISTRIBUTION_MISTER_DB_ID: Final[str] = 'distribution_mister'
 
 # Reboot wait times
