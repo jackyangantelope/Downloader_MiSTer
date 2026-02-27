@@ -186,7 +186,7 @@ jobs:
     - name: Release
       id: release
       run: |
-        git config --global user.email "theypsilon@gmail.com"
+        git config --global user.email "jackyangantelope@users.noreply.github.com"
         git config --global user.name "The CI/CD Bot"
         ./.github/release.sh
       env:

@@ -15,7 +15,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # You can download the latest version of this tool from:
-# https://github.com/MiSTer-devel/Downloader_MiSTer
+# https://github.com/jackyangantelope/Downloader_MiSTer
 
 set -euo pipefail
 
@@ -187,7 +187,7 @@ if [ -s "${LATEST_BUILD_PATH}" ] ; then
     cp "${LATEST_BUILD_PATH}" "${RUN_PATH}"
 else
     echo "Fetching latest Downloader build..."
-    download_file "${RUN_PATH}" "https://raw.githubusercontent.com/MiSTer-devel/Downloader_MiSTer/main/dont_download.sh"
+    download_file "${RUN_PATH}" "https://raw.githubusercontent.com/jackyangantelope/Downloader_MiSTer/main/dont_download.sh"
     echo
 fi
 
