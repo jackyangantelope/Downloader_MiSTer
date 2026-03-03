@@ -81,9 +81,29 @@ class FullRunService:
 
     def full_run(self):
         self._logger.bench('FullRunService Full Run start.')
+        self._install_box = None
         result = self._full_run_impl()
         self._logger.bench('FullRunService Full Run done.')
         self._remove_run_signal()
+
+        # Install ConsoleMode.tar.gz before reboot if both files were downloaded
+        if self._install_box is not None:
+            installed = self._install_box.installed_file_names()
+            has_console_mode = any('ConsoleMode.tar.gz' in f for f in installed)
+            has_install_sh = any('install.sh' in f for f in installed)
+            if has_console_mode and has_install_sh:
+                self._logger.print('ConsoleMode.tar.gz and install.sh detected, installing ConsoleMode...')
+                import subprocess
+                try:
+                    subprocess.run(
+                        ['./install', 'ConsoleMode.tar.gz'],
+                        cwd='/media/fat',
+                        shell=False,
+                        stderr=subprocess.STDOUT
+                    )
+                    self._logger.print('ConsoleMode installation completed.')
+                except Exception as e:
+                    self._logger.print(f'ConsoleMode installation failed: {e}')
 
         if not self._config['is_pc_launcher'] and self._needs_reboot():
             self._logger.print()
@@ -122,6 +142,7 @@ class FullRunService:
         #db_pkgs = [db_pkg for db_pkg in db_pkgs  if db_pkg.db_id == 'distribution_mister']
 
         install_box, download_dbs_err = self._online_importer.download_dbs_contents(db_pkgs)
+        self._install_box = install_box
         if download_dbs_err is not None:
             self._logger.debug(download_dbs_err)
             if isinstance(download_dbs_err, NetworkProblems):
@@ -131,6 +152,7 @@ class FullRunService:
 
                 self._logger.print('Retrying all connections...')
                 install_box, download_dbs_err = self._online_importer.download_dbs_contents(db_pkgs)
+                self._install_box = install_box
 
             if isinstance(download_dbs_err, NetworkProblems):
                 self._final_reporter.display_network_problems_msg()
