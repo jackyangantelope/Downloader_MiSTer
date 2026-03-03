@@ -1,3 +1,15 @@
+# ConsoleMode
+ConsoleMode is a graphical user interface menu that provides more convenient operation and a more user‑friendly interface.
+
+Intuitive graphical navigation — Clear menu structure and visual layout make functions easy to understand at a glance, with clearly visible operation paths.
+
+User‑friendly interactive experience — Focuses on feedback and guidance, lowering the barrier to entry so both beginners and experts can operate smoothly.
+
+Download ConsoleMode.tar.gz and install.sh from the Release page, place them in /media/fat, and run the following commands to install:
+
+cd /media/fat
+./install.sh ConsoleMode.tar.gz
+
 # MiSTer Downloader
 
 This tool installs and **updates all the cores** and other extra files for your *MiSTer*. It also updates the menu core, the MiSTer firmware and the Linux system. The source for all downloads is the [MiSTer Distribution](https://github.com/MiSTer-devel/Distribution_MiSTer) repository.
