@@ -8,6 +8,7 @@ User‑friendly interactive experience — Focuses on feedback and guidance, low
 Download ConsoleMode.tar.gz and install.sh from the Release page, place them in /media/fat, and run the following commands to install:
 
 cd /media/fat
+
 ./install.sh ConsoleMode.tar.gz
 
 # MiSTer Downloader
