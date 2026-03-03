@@ -14,11 +14,11 @@ cd /media/fat
 
 # MiSTer Downloader
 
-This tool installs and **updates all the cores** and other extra files for your *MiSTer*. It also updates the menu core, the MiSTer firmware and the Linux system. The source for all downloads is the [MiSTer Distribution](https://github.com/MiSTer-devel/Distribution_MiSTer) repository.
+This tool installs and **updates all the cores** and other extra files for your *MiSTer*. It also updates the menu core, the MiSTer firmware and the Linux system. The source for all downloads is the [MiSTer Distribution](https://github.com/jackyangantelope/Distribution_MiSTer) repository.
 
 ### Setup and Usage
 
-This tool is usually pre-installed in your MiSTer. If not, download this [ZIP file](https://github.com/MiSTer-devel/Downloader_MiSTer/releases/download/latest/MiSTer_Downloader.zip) and extract `update.sh` to your `/Scripts` folder on your primary SD card (create that folder if it doesn't exist). You only need to perform this operation once, since this tool self-updates itself.
+This tool is usually pre-installed in your MiSTer. If not, download this [ZIP file](https://github.com/jackyangantelope/Downloader_MiSTer/releases/download/latest/MiSTer_Downloader.zip) and extract `update.sh` to your `/Scripts` folder on your primary SD card (create that folder if it doesn't exist). You only need to perform this operation once, since this tool self-updates itself.
 
 To use it, on your MiSTer main menu, go to the *Scripts* screen, and select `update`.
 
@@ -147,7 +147,7 @@ More information about *Download Filters* [here](docs/download-filters.md).
 
 *Custom Databases* give users the ability to download [more file collections](docs/custom-databases.md).
 
-NOTE: If you manually add custom databases, you might want to make sure that you also have a [distribution_mister] section. That way you'll still be downloading the content from [MiSTer Distribution](https://github.com/MiSTer-devel/Distribution_MiSTer) together with the content from the custom database/s that you introduced.
+NOTE: If you manually add custom databases, you might want to make sure that you also have a [distribution_mister] section. That way you'll still be downloading the content from [MiSTer Distribution](https://github.com/jackyangantelope/Distribution_MiSTer) together with the content from the custom database/s that you introduced.
 
 ### Custom INI file
 
@@ -157,7 +157,7 @@ This flexibility allows for various use cases, such as running a specific databa
 
 ### How to avoid executing remote code altogether
 
-If you're concerned about executing a build that the launcher fetches from the web, you can avoid this by manually installing the latest version of Downloader's build. Just get [this file](https://github.com/MiSTer-devel/Downloader_MiSTer/releases/download/latest/dont_download.zip) and save it at `/media/fat/Scripts/.config/downloader/downloader_latest.zip` (remember to rename the file as instructed). You can verify the file's integrity using the provided MD5 checksum [here](https://github.com/MiSTer-devel/Downloader_MiSTer/releases/tag/latest).
+If you're concerned about executing a build that the launcher fetches from the web, you can avoid this by manually installing the latest version of Downloader's build. Just get [this file](https://github.com/jackyangantelope/Downloader_MiSTer/releases/download/latest/dont_download.zip) and save it at `/media/fat/Scripts/.config/downloader/downloader_latest.zip` (remember to rename the file as instructed). You can verify the file's integrity using the provided MD5 checksum [here](https://github.com/jackyangantelope/Downloader_MiSTer/releases/tag/latest).
 
 If not done manually, the launcher will automatically install that build on its first run. This auto-installation occurs only once and is designed to be secure.
 
