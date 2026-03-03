@@ -9,7 +9,7 @@ Download ConsoleMode.tar.gz and install.sh from the [Release page](https://githu
 
 ```bash
 cd /media/fat
-./install.sh ConsoleMode.tar.gz
+./install.sh
 ```
 
 # MiSTer Downloader
