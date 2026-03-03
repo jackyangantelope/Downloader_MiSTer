@@ -5,7 +5,7 @@ Intuitive graphical navigation — Clear menu structure and visual layout make f
 
 User‑friendly interactive experience — Focuses on feedback and guidance, lowering the barrier to entry so both beginners and experts can operate smoothly.
 
-Download ConsoleMode.tar.gz and install.sh from the Release page, place them in /media/fat, and run the following commands to install:
+Download ConsoleMode.tar.gz and install.sh from the [Release page](https://github.com/jackyangantelope/Downloader_MiSTer/releases/tag/latest), place them in `/media/fat`, and run the following commands to install:
 
 ```bash
 cd /media/fat
