@@ -184,7 +184,8 @@ class FullRunService:
         return False
 
     def _needs_reboot(self):
-        return self._reboot_calculator.calc_needs_reboot(self._linux_updater.needs_reboot(), self._online_importer.needs_reboot())
+        self._reboot_calculator.calc_needs_reboot(self._linux_updater.needs_reboot(), self._online_importer.needs_reboot())
+        return False
 
     def _remove_run_signal(self) -> None:
         if self._file_system.is_file(FILE_downloader_run_signal):
