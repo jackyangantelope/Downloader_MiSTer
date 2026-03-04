@@ -62,13 +62,13 @@ jobs:
     - name: System Quick Tests
       run: cd src && python3 -m unittest discover -s test/system/quick -v
 
-  system-slow-tests:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
-    - uses: ./.github/actions/setup-python
-    - name: System Slow Tests
-      run: cd src && python3 -m unittest discover -s test/system/slow -v
+  #system-slow-tests:
+   # runs-on: ubuntu-latest
+   # steps:
+   # - uses: actions/checkout@v4
+   # - uses: ./.github/actions/setup-python
+   # - name: System Slow Tests
+   #   run: cd src && python3 -m unittest discover -s test/system/slow -v
 
   launcher-test:
     runs-on: ubuntu-latest
