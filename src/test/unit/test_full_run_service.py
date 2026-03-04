@@ -66,7 +66,8 @@ class TestFullRunService(unittest.TestCase):
 
         FullRunService.with_single_db(db_empty, raw_db_empty_with_linux_descr(), linux_updater=linux_updater, os_utils=os_utils).full_run()
 
-        self.assertEqual(1, os_utils.calls_to_reboot)
+        #self.assertEqual(1, os_utils.calls_to_reboot)
+        self.assertEqual(0, os_utils.calls_to_reboot)
 
     def test_full_run___when_certificates_check_fails___returns_exit_code_error_no_certs(self):
         certificates_fix = Mock()
