@@ -25,6 +25,63 @@ LATEST_BIN_PATH="/media/fat/Scripts/.config/downloader/downloader_bin"
 CACERT_PEM_0="/etc/ssl/certs/cacert.pem"
 CACERT_PEM_1="/media/fat/Scripts/.config/downloader/cacert.pem"
 
+
+######################################################################
+# 封装的 autoboot 检查函数
+######################################################################
+check_autoboot() {
+
+    CONFIG_FILE="/media/fat/ConsoleMode/config.ini"
+    MAIN_BINARY_DIR="/media/fat/MainBinary"
+    AUTO_BINARY_FILE="/media/fat/AutoBinary/MiSTer"
+    MISTER_FILE="/media/fat/MiSTer"
+    MENU_FILE="/media/fat/protected/CMmenu.rbf"
+
+    if [ ! -f "$CONFIG_FILE" ]; then
+        echo "$CONFIG_FILE is not exist"
+        echo "Update complete."
+        echo "reboot..."
+		reboot
+    fi
+
+    AUTOboot=$(grep -E "^autoboot=" "$CONFIG_FILE" | cut -d'=' -f2 | tr -d ' \t')
+
+    if [ -z "$AUTOboot" ]; then
+        echo "No autoboot configuration item found"
+        echo "Update complete."
+        echo "reboot..."
+        sleep 3
+		reboot
+    fi
+
+    echo "autoboot = $AUTOboot"
+
+    mkdir -p "$MAIN_BINARY_DIR"
+
+    if [ "$AUTOboot" = "true" ]; then
+        echo "autoboot is true..."
+
+        cp -f "$MISTER_FILE" "$MAIN_BINARY_DIR/"
+        cp -f "$MENU_FILE" /media/fat/menu.rbf
+
+        if [ -f "$AUTO_BINARY_FILE" ]; then
+            cp -f "$AUTO_BINARY_FILE" "/media/fat/"
+        else
+            echo "Warning: Not found $AUTO_BINARY_FILE"
+            echo "Update complete."
+        fi
+
+    else
+        echo "autoboot is false..."
+        cp -f "$MISTER_FILE" "$MAIN_BINARY_DIR/"
+    fi
+
+    echo "reboot..."
+    sleep 3
+	reboot
+	exit 0
+}
+
 # NTP SETUP
 if (( 10#$(date +%Y) < 2000 )) ; then
     NTP_SERVERS=(
@@ -177,6 +234,8 @@ if [[ -s "${LATEST_BIN_PATH}" && -x /usr/bin/python3.9 ]] ; then
         echo -e "Downloader failed!\n"
         exit 1
     else
+		echo "check autoboot 1"
+		check_autoboot
         exit 0
     fi
 else
@@ -196,5 +255,8 @@ if ! "${RUN_PATH}" ; then
     echo -e "Downloader failed!\n"
     exit 1
 fi
+
+echo "check_autoboot 2"
+check_autoboot
 
 exit 0
