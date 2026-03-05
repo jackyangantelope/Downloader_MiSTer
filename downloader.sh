@@ -25,6 +25,61 @@ LATEST_BIN_PATH="/media/fat/Scripts/.config/Retroremake/downloader_bin"
 CACERT_PEM_0="/etc/ssl/certs/cacert.pem"
 CACERT_PEM_1="/media/fat/Scripts/.config/Retroremake/cacert.pem"
 
+######################################################################
+# ConsoleMode detection - record state BEFORE download
+######################################################################
+CONSOLE_MODE_DIR="/media/fat/ConsoleMode"
+CONSOLE_MODE_TAR="/media/fat/ConsoleMode.tar.gz"
+
+HAS_CONSOLE_MODE_DIR=false
+HASH_TAR_BEFORE=""
+
+if [ -d "${CONSOLE_MODE_DIR}" ]; then
+    HAS_CONSOLE_MODE_DIR=true
+fi
+
+if [ -f "${CONSOLE_MODE_TAR}" ]; then
+    HASH_TAR_BEFORE=$(md5sum "${CONSOLE_MODE_TAR}" | awk '{print $1}')
+fi
+
+######################################################################
+# Post-download check
+######################################################################
+post_download_check() {
+    HASH_TAR_AFTER=""
+    if [ -f "${CONSOLE_MODE_TAR}" ]; then
+        HASH_TAR_AFTER=$(md5sum "${CONSOLE_MODE_TAR}" | awk '{print $1}')
+    fi
+
+    TAR_CHANGED=false
+    if [ -n "${HASH_TAR_AFTER}" ] && [ "${HASH_TAR_BEFORE}" != "${HASH_TAR_AFTER}" ]; then
+        TAR_CHANGED=true
+        echo ""
+        echo "============================================"
+        echo "ConsoleMode.tar.gz has been updated."
+        echo "Please run install.sh to install ConsoleMode:"
+        echo "  cd /media/fat && ./install.sh"
+        echo "============================================"
+        echo ""
+		exit 0
+    fi
+
+	# Case 1: ConsoleMode dir did NOT exist before download
+    if [ "${HAS_CONSOLE_MODE_DIR}" = "false" ]; then
+        if [ -f "${CONSOLE_MODE_TAR}" ] && [ "${TAR_CHANGED}" = "false" ]; then
+            echo ""
+            echo "============================================"
+            echo "ConsoleMode.tar.gz found but not yet installed."
+            echo "Please run install.sh to install ConsoleMode:"
+            echo "  cd /media/fat && ./install.sh"
+            echo "============================================"
+            echo ""
+        fi        
+        exit 0
+    fi
+
+    check_autoboot
+}
 
 ######################################################################
 # autoboot
@@ -41,7 +96,7 @@ check_autoboot() {
         echo "$CONFIG_FILE is not exist"
         echo "Update complete."
         echo "exit..."
-		exit 0
+        exit 0
     fi
 
     AUTOboot=$(grep -E "^autoboot=" "$CONFIG_FILE" | cut -d'=' -f2 | tr -d ' \t')
@@ -49,11 +104,9 @@ check_autoboot() {
     if [ -z "$AUTOboot" ]; then
         echo "No autoboot configuration item found"
         echo "Update complete."
-        echo "exit..."        
-		exit 0
+        echo "exit..."
+        exit 0
     fi
-
-    echo "autoboot = $AUTOboot"
 
     mkdir -p "$MAIN_BINARY_DIR"
 
@@ -77,8 +130,8 @@ check_autoboot() {
 
     echo "reboot..."
     sleep 3
-	reboot
-	exit 0
+    reboot
+    exit 0
 }
 
 # NTP SETUP
@@ -233,8 +286,8 @@ if [[ -s "${LATEST_BIN_PATH}" && -x /usr/bin/python3.9 ]] ; then
         echo -e "Downloader failed!\n"
         exit 1
     else
-		echo "check autoboot 1"
-		check_autoboot
+        echo "post download check 1"
+        post_download_check
         exit 0
     fi
 else
@@ -255,7 +308,7 @@ if ! "${RUN_PATH}" ; then
     exit 1
 fi
 
-echo "check_autoboot 2"
-check_autoboot
+echo "post download check 2"
+post_download_check
 
 exit 0
