@@ -20,14 +20,14 @@
 set -euo pipefail
 
 RUN_PATH="/tmp/downloader.sh"
-LATEST_BUILD_PATH="/media/fat/Scripts/.config/downloader/downloader_latest.zip"
-LATEST_BIN_PATH="/media/fat/Scripts/.config/downloader/downloader_bin"
+LATEST_BUILD_PATH="/media/fat/Scripts/.config/Retroremake/downloader_latest.zip"
+LATEST_BIN_PATH="/media/fat/Scripts/.config/Retroremake/downloader_bin"
 CACERT_PEM_0="/etc/ssl/certs/cacert.pem"
-CACERT_PEM_1="/media/fat/Scripts/.config/downloader/cacert.pem"
+CACERT_PEM_1="/media/fat/Scripts/.config/Retroremake/cacert.pem"
 
 
 ######################################################################
-# 封装的 autoboot 检查函数
+# autoboot
 ######################################################################
 check_autoboot() {
 
@@ -40,8 +40,8 @@ check_autoboot() {
     if [ ! -f "$CONFIG_FILE" ]; then
         echo "$CONFIG_FILE is not exist"
         echo "Update complete."
-        echo "reboot..."
-		reboot
+        echo "exit..."
+		exit 0
     fi
 
     AUTOboot=$(grep -E "^autoboot=" "$CONFIG_FILE" | cut -d'=' -f2 | tr -d ' \t')
@@ -49,9 +49,8 @@ check_autoboot() {
     if [ -z "$AUTOboot" ]; then
         echo "No autoboot configuration item found"
         echo "Update complete."
-        echo "reboot..."
-        sleep 3
-		reboot
+        echo "exit..."        
+		exit 0
     fi
 
     echo "autoboot = $AUTOboot"
