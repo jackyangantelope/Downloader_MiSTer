@@ -57,8 +57,7 @@ post_download_check() {
         echo ""
         echo "============================================"
         echo "ConsoleMode.tar.gz has been updated."
-        echo "Please run install.sh to install ConsoleMode:"
-        echo "  cd /media/fat && ./install.sh"
+        echo "Please run the install function in the Script UI of the OSD menu."
         echo "============================================"
         echo ""
 		exit 0
@@ -70,8 +69,7 @@ post_download_check() {
             echo ""
             echo "============================================"
             echo "ConsoleMode.tar.gz found but not yet installed."
-            echo "Please run install.sh to install ConsoleMode:"
-            echo "  cd /media/fat && ./install.sh"
+			echo "Please run the install function in the Script UI of the OSD menu."
             echo "============================================"
             echo ""
         fi        
