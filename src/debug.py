@@ -35,7 +35,8 @@ def send_build(env=None, **kwargs):
     with tempfile.NamedTemporaryFile(delete=False) as tmp: subprocess.run(['./src/build.sh'], stderr=sys.stdout, stdout=tmp, env=env, check=True)
     os.chmod(tmp.name, 0o755)
 
-    if os.path.exists('dont_download.ini'): scp_file('dont_download.ini', '/media/fat/downloader.ini', **kwargs)
+    # 屏蔽downloader.ini逻辑
+    # if os.path.exists('dont_download.ini'): scp_file('dont_download.ini', '/media/fat/downloader.ini', **kwargs)
 
     scp_file(tmp.name, '/media/fat/downloader.sh', **kwargs)
     scp_file('downloader.sh', '/media/fat/Scripts/downloader.sh', **kwargs)

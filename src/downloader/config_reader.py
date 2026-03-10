@@ -185,6 +185,9 @@ class ConfigReader:
 
     def _load_ini_config(self, config_path) -> configparser.ConfigParser:
         ini_config = configparser.ConfigParser(inline_comment_prefixes=(';', '#'))
+        # 屏蔽downloader.ini逻辑 - 跳过对 /media/fat/downloader.ini 的读取
+        if config_path == FILE_downloader_ini:
+            return ini_config
         try:
             ini_config.read(config_path)
         except Exception as e:
