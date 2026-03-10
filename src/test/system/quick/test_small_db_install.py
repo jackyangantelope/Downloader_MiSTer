@@ -77,7 +77,7 @@ class TestSmallDbInstall(unittest.TestCase):
             os.makedirs(str(mister_path.parent), exist_ok=True)
             mister_path.touch()
 
-        store_path = Path("%s/Scripts/.config/downloader/downloader.json" % config['base_system_path'])
+        store_path = Path("%s/Scripts/.config/Retroremake/downloader.json" % config['base_system_path'])
         mtime = 0 if not store_path.is_file() else store_path.stat().st_mtime
 
         test_env = os.environ.copy()

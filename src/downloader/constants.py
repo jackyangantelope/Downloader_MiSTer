@@ -67,14 +67,14 @@ FILE_gamecontrollerdb_user: Final[str] = 'linux/gamecontrollerdb/gamecontrollerd
 FILE_yc_txt: Final[str] = 'yc.txt'
 
 # Downloader files
-FILE_downloader_storage_zip: Final[str] = 'Scripts/.config/downloader/downloader.json.zip'
-FILE_downloader_storage_json: Final[str] = 'Scripts/.config/downloader/downloader.json'
-FILE_downloader_storage_backup_pext: Final[str] = 'Scripts/.config/downloader/downloader_backup_pext.json'
-FILE_downloader_storage_sigs_json: Final[str] = 'Scripts/.config/downloader/downloader_sigs.json'
-FILE_downloader_previous_free_space_json: Final[str] = 'Scripts/.config/downloader/previous_free_space.json'
+FILE_downloader_storage_zip: Final[str] = 'Scripts/.config/Retroremake/downloader.json.zip'
+FILE_downloader_storage_json: Final[str] = 'Scripts/.config/Retroremake/downloader.json'
+FILE_downloader_storage_backup_pext: Final[str] = 'Scripts/.config/Retroremake/downloader_backup_pext.json'
+FILE_downloader_storage_sigs_json: Final[str] = 'Scripts/.config/Retroremake/downloader_sigs.json'
+FILE_downloader_previous_free_space_json: Final[str] = 'Scripts/.config/Retroremake/previous_free_space.json'
 FILE_downloader_external_storage: Final[str] = '.downloader_db.json'
-FILE_downloader_last_successful_run: Final[str] = 'Scripts/.config/downloader/%s.last_successful_run'
-FILE_downloader_log: Final[str] = 'Scripts/.config/downloader/%s.log'
+FILE_downloader_last_successful_run: Final[str] = 'Scripts/.config/Retroremake/%s.last_successful_run'
+FILE_downloader_log: Final[str] = 'Scripts/.config/Retroremake/%s.log'
 FILE_downloader_ini: Final[str] = '/media/fat/downloader.ini'
 FILE_downloader_launcher_script: Final[str] = 'Scripts/update.sh'
 

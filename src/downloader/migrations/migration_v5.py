@@ -31,7 +31,7 @@ class MigrationV5(MigrationBase):
         """remove old mister from old location in case it exists"""
         try:
             from pathlib import Path
-            mister_old = Path(self._config.get('base_system_path', MEDIA_FAT)) / 'Scripts/.config/downloader/MiSTer.old'
+            mister_old = Path(self._config.get('base_system_path', MEDIA_FAT)) / 'Scripts/.config/Retroremake/MiSTer.old'
             if mister_old.is_file():
                 mister_old.unlink(missing_ok=True)
         except Exception as e:

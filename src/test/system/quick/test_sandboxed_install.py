@@ -139,7 +139,7 @@ class TestSandboxedInstall(SandboxTestBase):
 
     installed_folders = {'bar': {}, 'bar/sub_bar': {}, 'bar/sub_bar/sub_sub_bar': {}, 'baz': {}, 'foo': {},
                          'foo/sub_foo': {}}
-    installed_system_folders = {'Scripts': {}, 'Scripts/.config': {}, 'Scripts/.config/downloader': {}}
+    installed_system_folders = {'Scripts': {}, 'Scripts/.config': {}, 'Scripts/.config/Retroremake': {}}
 
     def test_sandbox_db___installs_expected_folders(self):
         expected_local_store = local_store_files([('sandbox', {})])
