@@ -21,12 +21,12 @@ def scp_file(src, dest, **kwargs): _ssh_pass('scp', [scp_path(src), scp_path(des
 def exec_ssh(cmd, **kwargs): return _ssh_pass('ssh', [f'root@{mister_ip()}', f'{exports(**kwargs)}{cmd}'], **kwargs)
 def run_build(**kwargs): send_build(**kwargs) if _skip_send(**kwargs) else None, exec_ssh(f'/media/fat/downloader.sh', **kwargs)
 def run_launcher(**kwargs): send_build(**kwargs) if _skip_send(**kwargs) else None, exec_ssh(f'/media/fat/Scripts/downloader.sh', **kwargs)
-def run_launcher2(**kwargs): exec_ssh(f'/media/fat/Scripts/.config/downloader/downloader_bin', **kwargs)
+def run_launcher2(**kwargs): exec_ssh(f'/media/fat/Scripts/.config/Retroremake/downloader_bin', **kwargs)
 def run_compile(**kwargs): send_compile(**kwargs), exec_ssh(f'/media/fat/downloader_bin', **kwargs)
 def run_compile2(**kwargs): exec_ssh(f'/media/fat/downloader_bin', **kwargs)
-def store_push(ws='', **kwargs): scp_file('downloader.json', f'/media/fat/{ws}Scripts/.config/downloader/downloader.json', **kwargs)
-def store_pull(ws='', **kwargs): scp_file(f'/media/fat/{ws}Scripts/.config/downloader/downloader.json', 'downloader.json', **kwargs)
-def log_pull(ws='', **kwargs): scp_file(f'/media/fat/{ws}Scripts/.config/downloader/downloader.log', 'downloader.log', **kwargs)
+def store_push(ws='', **kwargs): scp_file('downloader.json', f'/media/fat/{ws}Scripts/.config/Retroremake/downloader.json', **kwargs)
+def store_pull(ws='', **kwargs): scp_file(f'/media/fat/{ws}Scripts/.config/Retroremake/downloader.json', 'downloader.json', **kwargs)
+def log_pull(ws='', **kwargs): scp_file(f'/media/fat/{ws}Scripts/.config/Retroremake/downloader.log', 'downloader.log', **kwargs)
 
 def _skip_send(env=None, **_kwargs): return env is None or not env.get('SKIP_SEND', True)
 
