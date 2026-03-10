@@ -20,6 +20,7 @@ old_commit = subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, t
 
 subprocess.run(['git', 'add', 'dont_download.sh', 'latest.id'], check=True)
 subprocess.run(['git', 'commit', '-m', 'BOT: New dont_download.sh'], check=True)
+subprocess.run(['git', 'pull', '--rebase', 'origin', 'main'], check=True)
 subprocess.run(['git', 'push', 'origin', 'main'], check=True)
 
 try:
