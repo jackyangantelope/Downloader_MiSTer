@@ -44,7 +44,7 @@ class ConfigReader:
 
     def calculate_config_path(self, current_working_dir: str) -> str:
         if self._env['PC_LAUNCHER'] is not None:
-            return str(Path(self._env['PC_LAUNCHER']).with_name('rrdownloader.ini')).replace('\\', '/')
+            return str(Path(self._env['PC_LAUNCHER']).with_name('downloader.ini')).replace('\\', '/')
 
         ini_path = self._env.get('DOWNLOADER_INI_PATH', None)
         if ini_path is not None:
@@ -70,7 +70,7 @@ class ConfigReader:
 
         result = ('/' if original_executable[0] in '/' else './') + parents + executable_path.stem + '.ini'
 
-        return result.replace('/update.ini', '/rrdownloader.ini')
+        return result.replace('/update.ini', '/downloader.ini')
 
     def read_config(self, config_path: str) -> Config:
         result = default_config()
