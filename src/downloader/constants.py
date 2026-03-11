@@ -75,7 +75,7 @@ FILE_downloader_previous_free_space_json: Final[str] = 'Scripts/.config/Retrorem
 FILE_downloader_external_storage: Final[str] = '.downloader_db.json'
 FILE_downloader_last_successful_run: Final[str] = 'Scripts/.config/Retroremake/%s.last_successful_run'
 FILE_downloader_log: Final[str] = 'Scripts/.config/Retroremake/%s.log'
-FILE_downloader_ini: Final[str] = '/media/fat/downloader.ini'
+FILE_downloader_ini: Final[str] = '/media/fat/rrdownloader.ini'
 FILE_downloader_launcher_script: Final[str] = 'Scripts/update.sh'
 
 # Linux Update files

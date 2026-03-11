@@ -32,10 +32,10 @@ def test(db_id: str, db_url: str):
             [{db_id}]
             db_url = {db_url}
         """
-        log('downloader.ini content:')
+        log('rrdownloader.ini content:')
         log(downloader_ini_content)
 
-        with open(temp_folder + '/downloader.ini', 'w') as fini:
+        with open(temp_folder + '/rrdownloader.ini', 'w') as fini:
             fini.write(downloader_ini_content)
 
         run(['./downloader.sh'], cwd=temp_folder,
